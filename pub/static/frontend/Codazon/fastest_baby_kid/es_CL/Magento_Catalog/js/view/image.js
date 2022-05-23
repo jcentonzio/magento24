@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-catalog/view/frontend/web/js/view/image.js

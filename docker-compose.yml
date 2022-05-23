@@ -1,0 +1,68 @@
+version: "3.8"
+
+# Listing our three containers. Or "services", as known by Docker Compose.
+services:
+  # Defining our MySQL container.
+  # "mysql" will be the network alias for this container.
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    networks:
+      - magento-network
+    ports:
+      - "3304:3304"
+    volumes:
+      - magento-mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: magento_docker_pass_root
+      MYSQL_USER: magento_docker_user
+      MYSQL_PASSWORD: magento_docker_pass
+      MYSQL_DATABASE: magento_docker
+
+  # Defining our Elasticsearch container
+  # "elasticsearch" will be the network alias for this container.
+  elasticsearch:
+    image: elasticsearch:7.6.0
+    container_name: elasticsearch
+    networks:
+        - magento-network
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+    environment:
+      discovery.type: single-node
+
+  # Defining our custom Magento 2 container.
+  # "magento-web" will be the network alias for this container.
+  magento-web:
+    # The build section tells Docker Compose how to build the image.
+    # This essentially runs a "docker build" command.
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+          USER: magento_docker_user
+          UID: 1000
+          GID: 1000
+    container_name: magento-web
+    networks:
+      - magento-network
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/workspaces/magento
+    depends_on:
+      - mysql
+      - elasticsearch
+    links: 
+      - mysql
+      - elasticsearch
+
+# The volume that is used by the MySQL container
+volumes:
+  magento-mysql-data:
+
+# The network where all the containers will live
+networks:
+  magento-network:
+    driver: bridge

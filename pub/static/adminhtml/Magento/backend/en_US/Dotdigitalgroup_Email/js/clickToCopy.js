@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/dotmailer/dotmailer-magento2-extension/view/adminhtml/web/js/clickToCopy.js

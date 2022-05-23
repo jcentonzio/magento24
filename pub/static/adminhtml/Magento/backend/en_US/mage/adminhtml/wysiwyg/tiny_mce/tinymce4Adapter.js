@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/lib/web/mage/adminhtml/wysiwyg/tiny_mce/tinymce4Adapter.js

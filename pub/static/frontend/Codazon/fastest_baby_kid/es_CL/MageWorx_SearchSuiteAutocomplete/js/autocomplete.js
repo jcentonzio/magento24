@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/app/code/MageWorx/SearchSuiteAutocomplete/view/frontend/web/js/autocomplete.js

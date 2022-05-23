@@ -1,0 +1,127 @@
+<?php
+/**
+ * Webkul Software.
+ *
+ * @category  Webkul
+ * @package   Webkul_RegionUpload
+ * @author    Webkul
+ * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license   https://store.webkul.com/license.html
+ */
+?>
+<?php
+$countryList = $block->getCountryList();
+?>
+<form id="wk_region_add_form" data-mage-init='{"validation": {}}' method="GET" class="admin__scope-old edit-form" 
+    action="<?= $block->escapeUrl($block->getUrl(
+        'regionupload/add/save',
+        ['_secure' => $block->getIsSecure()]
+    ))?>">
+    <div class="wk_main">
+        <fieldset class="admin__fieldset" id="wk_upload">
+            <div class="field admin__field _required">
+                <label class="admin__field-label">
+                    <?= $block->escapeHtml(__('Country')) ?>:
+                </label>
+                <div class="admin__field-control">
+                    <select 
+                        class="required-entry _required admin__control-select" 
+                        name="wk_country_id" 
+                        id="wk_country_id" 
+                        aria-required="true"
+                    >
+                        <?php
+                        foreach ($countryList as $pair) {
+                            ?>
+                            <option value="<?= $block->escapeHtml($pair['value']);
+                            ?>"
+                                >
+                                <?= $block->escapeHtml($pair['label']);
+                                ?>
+                                </option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                
+            </div>
+            <div class="admin__field _required" data-validate="{required:true}">
+                <label class="admin__field-label required">
+                    <?= $block->escapeHtml(__('Region Code')) ?>:
+                </label>
+                <div class="admin__field-control" >
+                        <input type="text" id="wk_region_code" 
+                        class="required-entry validate-no-html-tags admin__control-text" 
+                        data-validate="{required:true}" placeholder="AF-BGL" name="wk_region_code" />
+                </div>
+                
+            </div>
+            <div class="field admin__field _required">
+                <label class="admin__field-label">
+                    <?= $block->escapeHtml(__('Region Name')) ?>:
+                </label>
+                <div class="admin__field-control _required">
+                        <input type="text" id="wk_region_name" 
+                        class=" required-entry admin__control-text" placeholder="Baghlan" name="wk_region_name" />
+                </div>
+               
+            </div>
+        </fieldset>
+    </div>
+</form>
+
+<form id="wk_regionupload_popup" method="POST" data-mage-init='{"validation": {}}'
+class="admin__scope-old edit-form" enctype="multipart/form-data"
+    action="<?= $block->escapeUrl($block->getUrl(
+        'regionupload/csv/upload',
+        ['_secure' => $block->getIsSecure()]
+    ))?>" style="display:none">
+        <fieldset class="admin__fieldset" id="wk_upload">
+            <input type="hidden" name="form_key" value= "<?= $block->escapeHtml($block->getFormKey()) ?>"/>
+        <div class="field admin__field required">
+            <label class="admin__field-label">
+                <?= $block->escapeHtml(__('Country')) ?>:
+            </label>
+            <div class="admin__field-control">
+                <select  
+                    class="required-entry _required admin__control-select" 
+                    name="wk_country_id" 
+                    id="wk_country_id" 
+                    aria-required="true"
+                >
+                    <?php
+                    foreach ($countryList as $pair) {
+                        ?>
+                        <option value="<?= $block->escapeHtml($pair['value']);
+                        ?>"
+                            >
+                            <?= $block->escapeHtml($pair['label']);
+                            ?>
+                            </option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="field admin__field _required">
+            <label class="admin__field-label">
+                <?= $block->escapeHtml(__('Upload CSV File')) ?>:
+            </label>
+            <div class="admin__field-control">
+                    <input type="file" class="admin__control-text" name="wk_region_upload" />
+                    <a href="<?= $block->escapeUrl($block->getSampleCsv()) ?>" 
+                    name="sample_file"><?= $block->escapeHtml(__("Download Sample File")) ?></a>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "wkUploadRegion": {}
+        }
+    }
+</script>

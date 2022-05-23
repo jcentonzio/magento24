@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-media-gallery-ui/view/adminhtml/web/js/grid/messages.js

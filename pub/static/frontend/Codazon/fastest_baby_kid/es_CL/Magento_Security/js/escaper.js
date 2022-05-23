@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-security/view/base/web/js/escaper.js

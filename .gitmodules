@@ -1,0 +1,9 @@
+[submodule "app/code/Random/InsertDocument"]
+	path = app/code/Random/InsertDocument
+	url = git@github.com:RandomCL/InsertDocument.git
+[submodule "app/code/Random/CustomerAttribute"]
+	path = app/code/Random/CustomerAttribute
+	url = git@github.com:RandomCL/CustomerAttribute.git
+[submodule "app/code/Random/IntegrationApi"]
+	path = app/code/Random/IntegrationApi
+	url = git@github.com:RandomCL/IntegrationApi.git

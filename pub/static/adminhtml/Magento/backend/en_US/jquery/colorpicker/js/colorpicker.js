@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/lib/web/jquery/colorpicker/js/colorpicker.js

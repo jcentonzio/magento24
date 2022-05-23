@@ -1,0 +1,892 @@
+{
+	"info": {
+		"_postman_id": "63a9f917-2ac2-45df-8424-aeac9668a9ac",
+		"name": "magento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get the attribute set ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/eav/attribute-sets/list?searchCriteria[filter_groups][0][filters][0][field]=attribute_set_name&searchCriteria[filter_groups][0][filters][0][value]=random&searchCriteria[filter_groups][0][filters][0][condition_type]=eq",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"eav",
+						"attribute-sets",
+						"list"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][field]",
+							"value": "attribute_set_name"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][value]",
+							"value": "random"
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][condition_type]",
+							"value": "eq"
+						}
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": ""
+						}
+					]
+				},
+				"description": "Obtiene el o los sett de atributos segun los filtros aplicados.\n\nLo utilizamos con los siguientes valores para obtener el ID del set de atributos llamado `random` que se crea en las configuraciones post instalación y así identificar el ID.\n\nquery params:\n* searchCriteria[filter_groups][0][filters][0][field] = attribute_set_name\n* searchCriteria[filter_groups][0][filters][0][value] = random\n* searchCriteria[filter_groups][0][filters][0][condition_type] = eq\n\nmás información en: https://devdocs.magento.com/guides/v2.4/rest/tutorials/configurable-product/plan-product.html#get-the-attribute-set-id"
+			},
+			"response": []
+		},
+		{
+			"name": "create simple product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product\": {\n        \"sku\": \"BEBIDA\",\n        \"name\": \"Bebida Coca\",\n        \"attribute_set_id\": 25,\n        \"price\": 800,\n        \"status\": 1,\n        \"visibility\": 4,\n        \"type_id\": \"simple\",\n        \"weight\": 0,\n        \"extension_attributes\": {\n            \"category_links\": [\n                {\n                    \"position\": 1,\n                    \"category_id\": \"2\"\n                }\n            ],\n            \"stock_item\": {\n                \"qty\": \"1000\",\n                \"is_in_stock\": true\n            }\n        },\n        \"custom_attributes\": [\n            {\n                \"attribute_code\": \"description\",\n                \"value\": null\n            },\n            {\n                \"attribute_code\": \"tax_class_id\",\n                \"value\": \"2\"\n            },\n            {\n                \"attribute_code\": \"material\",\n                \"value\": \"148\"\n            },\n            {\n                \"attribute_code\": \"pattern\",\n                \"value\": \"196\"\n            },\n            {\n                \"attribute_code\": \"url_key\",\n                \"value\": \"bebida2-bebida-coca\"\n            }\n        ]\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"type": "string",
+							"value": "default"
+						}
+					]
+				},
+				"description": "* El \"attribute_set_id\" debe ser siempre el mismo (por el momento): el nombre es \"random\" y su id es 25 (creado en el panel de administración de ecom-demo.random.cl)\n\n* En \"custom_attributes\", se debe especificar la url_key del producto de la siguiente forma:\n ```json\n {\n    \"attribute_code\": \"url_key\",\n    \"value\": \"<nombre_formateado>-<sku_en_minusculas>\"\n }\n```\ndonde \n* <nombre_formateado> es el nombre del producto con espacios reemplazados por guiones (-) y todo el string en minusculas.\n* <sku_en_minusculas> es el sku en minusculas :)\n\nmás información en: https://devdocs.magento.com/guides/v2.4/rest/tutorials/configurable-product/create-simple-products.html"
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/:sku",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						":sku"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"type": "string",
+							"value": "default"
+						},
+						{
+							"key": "sku",
+							"value": "POLERA-BKN"
+						}
+					]
+				},
+				"description": "Elimina un producto dado su SKU.\n\nmás información: https://magento.redoc.ly/2.4.1-admin/tag/productssku#operation/catalogProductRepositoryV1DeleteByIdDelete"
+			},
+			"response": []
+		},
+		{
+			"name": "Get the list of category values",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/categories",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"categories"
+					],
+					"query": [
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][field]",
+							"value": "id",
+							"disabled": true
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][value]",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "searchCriteria[filter_groups][0][filters][0][condition_type]",
+							"value": "gte",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default",
+							"type": "string"
+						}
+					]
+				},
+				"description": "Obtiene el listado de categorías segun los query params.\n\nmás información: https://devdocs.magento.com/guides/v2.4/rest/tutorials/configurable-product/plan-product.html#get-the-list-of-category-values"
+			},
+			"response": []
+		},
+		{
+			"name": "create category",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"category\": {\n    \"parent_id\": 1,\n    \"name\": \"Productos Random\",\n    \"is_active\": true,\n    \"level\": 1,\n    \"include_in_menu\": true,\n    \"custom_attributes\":[\n         {\n            \"attribute_code\":\"description\",\n            \"value\":\"productos de random erp\"\n         },\n         {\n            \"attribute_code\":\"meta_title\",\n            \"value\":\"meta title\"\n         },\n         {\n            \"attribute_code\":\"meta_keywords\",\n            \"value\":\"meta keywords\"\n         },\n         {\n            \"attribute_code\":\"meta_description\",\n            \"value\":\"meta description\"\n         },\n         {\n            \"attribute_code\":\"url_key\",\n            \"value\":\"productos-random\"\n         }\n      ]\n    }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/categories",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"categories"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default",
+							"type": "string"
+						}
+					]
+				},
+				"description": "crea una categoría.\n\n\nmás información: https://devdocs.magento.com/guides/v2.4/rest/modules/catalog.html#categories"
+			},
+			"response": []
+		},
+		{
+			"name": "Create attribute set",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"attributeSet\": {\n    \"attribute_set_name\": \"NEWSET\",\n    \"sort_order\": 10,\n    \"entity_type_id\": 4\n  },\n  \"skeletonId\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/V1/products/attribute-sets",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"products",
+						"attribute-sets"
+					]
+				},
+				"description": "crea un set de atributos basado en otro previamente creado.\n\nmás información: https://magento.redoc.ly/2.4.1-admin/tag/productssku#operation/catalogAttributeSetManagementV1CreatePost"
+			},
+			"response": []
+		},
+		{
+			"name": "update random code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/V1/customer/set-code?newRandomCode=WEB0000003&oldRandomCode=WEB0000004",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customer",
+						"set-code"
+					],
+					"query": [
+						{
+							"key": "newRandomCode",
+							"value": "WEB0000003"
+						},
+						{
+							"key": "oldRandomCode",
+							"value": "WEB0000004"
+						}
+					]
+				},
+				"description": "Actualiza el codigo random a un customer en magento.\n\ncontexto:\n\nal insertar entidad desde Magento hacia Random, si el customer está loggeado (y no existe en Random) se crea su KOEN según el ID que Magento provee y ese resultado se establece en el randomCode del customer en Magento. Este endpoint es para actualizar el randomCode con el que Random tenga asociado al customer.\n\n\nlos atributos se pasan por query params.\n\natributos:\n* `newRandomCode` (string): codigo random nuevo\n* `oldRandomCode` (string): codigo random actual del customer en Magento\n\nretorna el siguiente json\n\n```json\n{\n    \"success\": boolean,\n    \"message\": string\n}\n```\nDonde: \n* `success` es `true` o `false` dependiendo de si la operación tuvo éxito o no.\n* `message` es un string con el mensaje de error o éxito"
+			},
+			"response": []
+		},
+		{
+			"name": "create customer group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/V1/group/create?code=TEST3",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"group",
+						"create"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "TEST3"
+						},
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Crea un nuevo grupo para customers\n\nlos atributos se pasan por query params.\n\natributos:\n* `code` (string): nombre del grupo\n\n\nretorna el siguiente json\n\n```json\n{\n    \"success\": boolean,\n    \"message\": string\n}\n```\nDonde: \n* `success` es `true` o `false` dependiendo de si la operación tuvo éxito o no.\n* `message` es un string con el mensaje de error o éxito"
+			},
+			"response": []
+		},
+		{
+			"name": "Update customers group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupCode\": \"TEST47\",\n    \"customers\": [\n        \"WEB0007\",\n        \"code2\",\n        \"code3\",\n        \"code4\"\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/V1/customer/add-to-group",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customer",
+						"add-to-group"
+					]
+				},
+				"description": "Actualiza el grupo de los customers referenciados por su código random al grupo indicado por `groupCode`.\n\nlos datos se pasan en el body del request como `json`\n\npayload:\n\n```json\n{\n    \"groupCode\": string,\n    \"customers\": [\n        \"randomCode1\",\n        \"randomCode2\"\n    ]\n}\n```\n\nDonde\n* `groupCode`: es el nombre del grupo (si no existe el grupo, se creará).\n* `customers`: es un array con cada `randomCode` de cada customer a agregar al grupo.\n\n\nretorna el siguiente json\n\n```json\n{\n    \"success\": boolean,\n    \"message\": string,\n    \"error-codes\": array\n}\n```\nDonde: \n* `success` es `true` o `false` dependiendo de si la operación tuvo éxito o no.\n* `message` es un string con el mensaje de error o éxito\n* `error-codes` es un array con el listado de codigosRandom que se pasaron en el payload, que no tienen relación con ningún customer."
+			},
+			"response": []
+		},
+		{
+			"name": "create customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/V1/customer/create?name=Prueba&lastName=Prueba&email=prueba9@random.cl&password=1234prueba&randomCode=WEB0007&rut=17154813-6",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						"V1",
+						"customer",
+						"create"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Prueba"
+						},
+						{
+							"key": "lastName",
+							"value": "Prueba"
+						},
+						{
+							"key": "email",
+							"value": "prueba9@random.cl"
+						},
+						{
+							"key": "password",
+							"value": "1234prueba"
+						},
+						{
+							"key": "randomCode",
+							"value": "WEB0007"
+						},
+						{
+							"key": "rut",
+							"value": "17154813-6"
+						},
+						{
+							"key": "giro",
+							"value": "TEST",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Crea un customer en magento.\n\nlos atributos se pasan por query params.\n\natributos:\n* `name` (string): nombre del customer\n* `lastName` (string): apellido del customer\n* `email` (string): email del customer\n* `password` (string): password del customer\n* `randomCode` (string): codigo del cliente asociado en Random para el customer\n* `rut` (string): RUT del customer\n* `giro` (string): OPCIONAL. giro del customer. Si no se ingresa, se asumirá como 'PARTICULAR'\n\nretorna el siguiente json\n\n```json\n{\n    \"success\": boolean,\n    \"message\": string\n}\n```\nDonde: \n* `success` es `true` o `false` dependiendo de si la operación tuvo éxito o no.\n* `message` es un string con el mensaje de error o éxito"
+			},
+			"response": [
+				{
+					"name": "create customer error email repetido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/rest/V1/customer/create?name=Prueba&lastName=Prueba&email=prueba9@random.cl&password=1234prueba&randomCode=WEB0007&rut=17154813-6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"rest",
+								"V1",
+								"customer",
+								"create"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Prueba"
+								},
+								{
+									"key": "lastName",
+									"value": "Prueba"
+								},
+								{
+									"key": "email",
+									"value": "prueba9@random.cl"
+								},
+								{
+									"key": "password",
+									"value": "1234prueba"
+								},
+								{
+									"key": "randomCode",
+									"value": "WEB0007"
+								},
+								{
+									"key": "rut",
+									"value": "17154813-6"
+								},
+								{
+									"key": "giro",
+									"value": "TEST",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:5000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 04 Feb 2021 13:19:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.13"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-store"
+						}
+					],
+					"cookie": [],
+					"body": "\"{\\\"success\\\":false,\\\"message\\\":\\\"Ya existe un cliente con la misma direcci\\\\u00f3n de correo electr\\\\u00f3nico en un sitio web asociado.\\\"}\""
+				}
+			]
+		},
+		{
+			"name": "set special price",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prices\": [\n    {\n      \"price\": 200,\n      \"store_id\": 0,\n      \"price_from\": \"2021-01-27 00:00:00\",\n      \"price_to\": \"2021-01-27 23:59:59\",\n      \"sku\": \"BEBIDA\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/special-price",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"special-price"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "prices es un array de:\n```json\n{\n    \"price\": float,\n    \"store_id\": integer,\n    \"price_from\": string,\n    \"price_to\": string,\n    \"sku\": string\n}\n```\ndonde:\n\n* price (float): el precio especial del producto.\n* store_id (integer): el ID de la store. en el comun de los casos es 0 (cero).\n* price_from (string): la fecha y hora en la que el precio especial toma efecto. el formato es YYYY-MM-DD hh:mm:ss.\n* price_to (string): la fecha y hora en la que el precio especial deja de tomar efecto. el formato es YYYY-MM-DD hh:mm:ss. Si no se especifica, el precio no va a expirar.\n* sku (string): el SKU del producto\n\nEn éxito retorna un array vacío."
+			},
+			"response": []
+		},
+		{
+			"name": "get special prices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"skus\": [\n    \"BEBIDA\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/special-price-information",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"special-price-information"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "obtiene los precios especiales de el o los skus indicados.\n\nen éxito, retorna un array con objetos del tipo:\n\n```json\n{\n    \"price\": float,\n    \"store_id\": integer,\n    \"sku\": string,\n    \"price_from\": string,\n    \"price_to\": string\n}\n```\n\nrepresentando cada precio especial de cada sku indicado"
+			},
+			"response": []
+		},
+		{
+			"name": "set tier prices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prices\": [\n    {\n      \"price\": 10,\n      \"price_type\": \"fixed\",\n      \"website_id\": 0,\n      \"sku\": \"BEBIDA\",\n      \"customer_group\": \"NOT LOGGED IN\",\n      \"quantity\": 1\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/tier-prices",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"tier-prices"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "Agrega un descuento a clientes de un grupo especifico.\n\n(Se pueden crear grupos nueuvos en el panel de administración de Magento y asignar Customers a los grupos creados.)\n\nprices es un array de:\n```json\n{\n    \"price\": float,\n    \"price_type\": string (\"fixed\" | \"discount\"),\n    \"website_id\": integer,\n    \"sku\": string,\n    \"customer_group\": string,\n    \"quantity\": float\n}\n```\n* price: si price_type es \"fixed\", acá va el precio de descuento por la cantidad a comprar. Si price_type es \"discount\", acá va el porcentaje de descuento (según el precio base del producto) por la cantidad a comprar.\n* price_type: es \"fixed\" o \"discount\", dependiendo de si se quiere usar un valor fijo o un porcentaje de descuento con respecto al precio base.\n* website_id: es el id del sitio web donde aplicar el descuento. Por lo general es 0 (cero).\n* sku: el SKU del producto\n* customer_group: el nombre del grupo de customers. se obtiene desde el panel de administraciónde Magento. Por defecto existen estos: \"NOT LOGGED IN\", \"General\", \"Wholesale\" y \"Retailer\". Por defecto todos los customers registrados se van al grupo \"General\".\n* quantity: cantidad que debe ser comprada para aplicar el descuento.\n\nEn éxito retorna un array vacío."
+			},
+			"response": []
+		},
+		{
+			"name": "get tier prices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"skus\": [\n    \"BEBIDA\"\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/tier-prices-information",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"tier-prices-information"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "obtiene los tier prices de el o los skus indicados.\n\nen éxito, retorna un array con objetos del tipo:\n```json\n{\n    \"price\": float,\n    \"price_type\": string,\n    \"website_id\": integer,\n    \"sku\": string,\n    \"customer_group\": string,\n    \"quantity\": float\n}\n```\nrepresentando cada tier price de cada sku indicado"
+			},
+			"response": []
+		},
+		{
+			"name": "delete tier prices",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prices\": [\n    {\n        \"price\": 10,\n        \"price_type\": \"fixed\",\n        \"website_id\": 0,\n        \"sku\": \"BEBIDA\",\n        \"customer_group\": \"NOT LOGGED IN\",\n        \"quantity\": 1\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/tier-prices-delete",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"tier-prices-delete"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "elimina uno o más tier prices.\n\nEl payload es igual que el para agregar tier prices. Se deben agregar los mismos atributos con los que se creó cada tier price para cada SKU.\n\nEn éxito retorna un array vacío."
+			},
+			"response": []
+		},
+		{
+			"name": "delete special price",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token-mage}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prices\": [\n    {\n      \"price\": 200,\n      \"store_id\": 0,\n      \"price_from\": \"2021-01-25 00:00:00\",\n      \"price_to\": \"2021-01-29 23:59:59\",\n      \"sku\": \"BEBIDA\"\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url-mage}}/rest/:storeCode/V1/products/special-price-delete",
+					"host": [
+						"{{url-mage}}"
+					],
+					"path": [
+						"rest",
+						":storeCode",
+						"V1",
+						"products",
+						"special-price-delete"
+					],
+					"variable": [
+						{
+							"key": "storeCode",
+							"value": "default"
+						}
+					]
+				},
+				"description": "elimina uno o más precios especiales.\n\nEl payload es igual que el para agregar precios especiales. Se deben agregar los mismos atributos con los que se creó cada precio especial para cada SKU.\n\nEn éxito retorna un array vacío."
+			},
+			"response": []
+		}
+	]
+}

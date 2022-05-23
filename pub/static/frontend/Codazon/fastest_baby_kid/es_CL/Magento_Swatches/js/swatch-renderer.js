@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-swatches/view/base/web/js/swatch-renderer.js

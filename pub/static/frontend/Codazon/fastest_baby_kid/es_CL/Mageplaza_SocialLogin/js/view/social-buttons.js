@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/app/code/Mageplaza/SocialLogin/view/frontend/web/js/view/social-buttons.js

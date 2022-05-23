@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-cms/view/adminhtml/web/js/folder-tree.js

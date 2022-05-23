@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/ProductFilter/view/frontend/web/js/firstload.js
