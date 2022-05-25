@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+	<group id="default">
+		<job name="cento_automation_importproduct" instance="Cento\Automation\Cron\ImportProduct" method="execute">
+			<schedule>*/5 * * * *</schedule>
+		</job>
+        <job name="cento_automation_importmanufacturer" instance="Cento\Automation\Cron\ImportManufacturer" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+	</group>
+</config>
