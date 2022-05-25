@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-ui/view/frontend/web/js/view/messages.js

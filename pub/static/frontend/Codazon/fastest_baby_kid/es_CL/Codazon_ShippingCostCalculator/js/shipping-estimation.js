@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/ShippingCostCalculator/view/frontend/web/js/shipping-estimation.js

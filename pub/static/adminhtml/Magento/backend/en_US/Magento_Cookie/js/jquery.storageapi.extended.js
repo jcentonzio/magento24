@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-cookie/view/base/web/js/jquery.storageapi.extended.js

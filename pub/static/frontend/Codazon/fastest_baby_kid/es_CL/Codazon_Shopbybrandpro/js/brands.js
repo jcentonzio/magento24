@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/Shopbybrandpro/view/frontend/web/js/brands.js

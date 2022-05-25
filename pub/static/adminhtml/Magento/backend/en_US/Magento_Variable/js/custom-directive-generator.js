@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-variable/view/adminhtml/web/js/custom-directive-generator.js

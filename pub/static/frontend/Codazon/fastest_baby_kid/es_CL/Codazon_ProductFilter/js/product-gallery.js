@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/design/frontend/Codazon/fastest/fashion/Codazon_ProductFilter/web/js/product-gallery.js

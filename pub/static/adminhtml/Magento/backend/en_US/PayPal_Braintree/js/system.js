@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/paypal/module-braintree-core/view/adminhtml/web/js/system.js

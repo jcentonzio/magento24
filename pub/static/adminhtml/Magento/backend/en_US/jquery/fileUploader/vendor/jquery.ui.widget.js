@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/lib/web/jquery/fileUploader/vendor/jquery.ui.widget.js

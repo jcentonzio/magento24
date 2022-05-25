@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/AjaxCartPro/view/frontend/web/js/ajaxcart.js

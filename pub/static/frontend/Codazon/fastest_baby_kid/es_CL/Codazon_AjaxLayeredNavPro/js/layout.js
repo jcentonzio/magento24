@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/design/frontend/Codazon/fastest/baby_kid/Codazon_AjaxLayeredNavPro/web/js/layout.js

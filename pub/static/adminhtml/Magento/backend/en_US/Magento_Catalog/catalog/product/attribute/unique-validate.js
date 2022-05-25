@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-catalog/view/adminhtml/web/catalog/product/attribute/unique-validate.js

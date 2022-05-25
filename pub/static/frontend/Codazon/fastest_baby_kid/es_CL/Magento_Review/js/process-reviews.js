@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/design/frontend/Codazon/fastest/fashion/Magento_Review/web/js/process-reviews.js

@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/ThemeOptions/view/adminhtml/web/js/onecolor.js

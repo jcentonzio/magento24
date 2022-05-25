@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/app/code/Codazon/Lookbookpro/view/adminhtml/web/js/assign-lookbook-item.js

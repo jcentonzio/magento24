@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/magento-docker/vendor/magento/module-catalog/view/frontend/web/js/catalog-add-to-cart.js
