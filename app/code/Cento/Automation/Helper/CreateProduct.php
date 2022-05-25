@@ -144,7 +144,7 @@ class CreateProduct {
 
         $idManufacturer = $this->_addOptionAttribute->findManufacturerOption($params->descripmarca);
 
-        try {:
+        try {
 
                 echo "importando producto";
                 echo "</br>";
