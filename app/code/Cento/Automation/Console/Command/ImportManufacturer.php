@@ -29,7 +29,7 @@ class ImportManufacturer extends Command
     ) {
         $name = $input->getArgument(self::NAME_ARGUMENT);
         $option = $input->getOption(self::NAME_OPTION);
-        $output->writeln("Hello " . $name);
+        $output->writeln("Importando marcas... " . $name);
 
         $cron = \Magento\Framework\App\ObjectManager::getInstance()
             ->create('\Cento\Automation\Cron\ImportManufacturer'); //pass the name of your cron class path
