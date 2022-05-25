@@ -147,6 +147,7 @@ class CreateProduct {
         try {
 
                 echo "importando producto";
+                echo "</br>";
 
                 $product->unsetData();
                 $product->setTypeId('simple')
