@@ -170,6 +170,11 @@ class CreateProduct {
                 $path = $imagePath . '/media/import-images/product/'. $fileName . '-'. $i .  '.jpg';
                 if($this->_fileDriver->isExists($path)) {
                     $product->addImageToMediaGallery($path, array('image', 'small_image', 'thumbnail'), true, false);
+                } else {
+                    $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
+                    $logger = new \Zend\Log\Logger();
+                    $logger->addWriter($writer);
+                    $logger->info("no se encontro archivo {$path}");
                 }
             }
 
