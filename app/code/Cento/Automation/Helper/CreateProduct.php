@@ -164,7 +164,7 @@ class CreateProduct {
                     ->setCategoryIds($categorySet);
 
             $imagePath = $this->directoryList->getPath('pub');
-            $fileName = $product->getSku();
+            $fileName = $params->codigo;
 
             for ($i = 3; $i < 12; $i++) {
                 $path = $imagePath . '/media/import-images/product/'. $fileName . '-'. $i .  '.jpg';
