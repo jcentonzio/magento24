@@ -169,6 +169,10 @@ class CreateProduct {
             for ($i = 3; $i < 12; $i++) {
                 $path = $imagePath . '/media/import-images/product/'. $fileName . '-'. $i .  '.jpg';
                 if($this->_fileDriver->isExists($path)) {
+                    $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
+                    $logger = new \Zend\Log\Logger();
+                    $logger->addWriter($writer);
+                    $logger->info("se encontro archivo {$path}");
                     $product->addImageToMediaGallery($path, array('image', 'small_image', 'thumbnail'), true, false);
                 } else {
                     $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
