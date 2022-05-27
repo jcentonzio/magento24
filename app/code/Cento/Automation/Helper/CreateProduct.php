@@ -139,8 +139,8 @@ class CreateProduct {
         $sourceCategoryOne = $this->_categories->getFindCategory($params->nombreclasif1);
         $sourceCategorySecond = $this->_categories->getFindCategory($params->nombreclasif2);
 
-        $categorySet[] = $sourceCategoryOne['id'];
-        $categorySet[] = $sourceCategorySecond['id'];
+        $categorySet[] = 37;
+        //$categorySet[] = $sourceCategorySecond['id'];
 
         $idManufacturer = $this->_addOptionAttribute->findManufacturerOption($params->descripmarca);
 

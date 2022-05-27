@@ -49,7 +49,7 @@ class Service
                 ]
             ];
 
-            $response = $client->post('http://45.182.116.158:5030/busa/filtroproducto', [
+            $response = $client->post('http://45.182.116.158:5030/busa/ofertas', [
                 'json' => $params
             ]);
 
