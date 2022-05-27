@@ -49,9 +49,7 @@ class Service
                 ]
             ];
 
-            $response = $client->post('http://45.182.116.158:5030/busa/ofertas', [
-                'json' => $params
-            ]);
+            $response = $client->get('http://45.182.116.158:5030/busa/ofertas');
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
