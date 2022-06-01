@@ -188,7 +188,7 @@ class CreateProduct {
 
              $stockData = [
                  'is_in_stock' => 1,
-                 'qty' => 100,
+                 'qty' => $params->stock,
                  'manage_stock' => 1,
              ];
 
