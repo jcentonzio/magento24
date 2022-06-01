@@ -149,11 +149,13 @@ class CreateProduct {
                 echo "importando producto";
                 echo "</br>";
 
+                $nombre = "{$params->codigo}-{$params->nombre}";
+
                 $product->unsetData();
                 $product->setTypeId('simple')
                     ->setAttributeSetId(4)
                     ->setWebsiteIds([1])
-                    ->setName($params->nombre)
+                    ->setName($nombre)
                     ->setSku($params->codigo)
                     ->setPrice($params->preciominorista)
                     ->setWeight(1)

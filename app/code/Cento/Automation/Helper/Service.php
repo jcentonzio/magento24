@@ -24,7 +24,7 @@ class Service
 
             $client = new Client();
 
-            $response = $client->get('http://45.182.116.158:5030/busa/marcas');
+            $response = $client->get('http://161.35.232.26:5030/busa/marcas');
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
@@ -49,7 +49,7 @@ class Service
                 ]
             ];
 
-            $response = $client->get('http://45.182.116.158:5030/busa/ofertas');
+            $response = $client->get('http://161.35.232.26:5030/busa/ofertas');
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
