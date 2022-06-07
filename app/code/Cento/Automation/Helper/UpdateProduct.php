@@ -130,10 +130,10 @@ class UpdateProduct {
 
     }
 
-    public function execute($params)
+    public function execute($productId, $params)
     {
 
-        $product = $this->_productFactory->create();
+        $product = $this->productRepository->getById($productId);
         $sourceItems = [];
 
         $sourceCategoryOne = $this->_categories->getFindCategory($params->nombreclasif1);

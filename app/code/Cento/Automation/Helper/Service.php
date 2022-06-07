@@ -49,7 +49,7 @@ class Service
                 ]
             ];
 
-            $response = $client->get('http://161.35.232.26:5030/busa/ofertas');
+            $response = $client->post('http://161.35.232.26:5030/busa/filtroproducto', ["json" => $params]);
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
@@ -62,4 +62,31 @@ class Service
             throw $ex;
         }
     }
+
+    public function updateProduct($sku) {
+        try {
+
+            $client = new Client();
+
+            $params = [
+                "data" => [
+                    "codigo" => $sku
+                ]
+            ];
+
+            $response = $client->post('http://161.35.232.26:5030/busa/elproducto', ["json" => $params]);
+
+            if ($response->getStatusCode() !== 200) {
+                throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
+            }
+
+            return (string)$response->getBody();
+
+        } catch (\Exception $ex) {
+            $this->logger->critical($ex->getMessage());
+            throw $ex;
+        }
+    }
+
+
 }

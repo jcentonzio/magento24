@@ -32,7 +32,7 @@ class UpdateProduct extends Command
         $output->writeln("Hello " . $name);
 
         $cron = \Magento\Framework\App\ObjectManager::getInstance()
-            ->create('Cento\Automation\Cron\UpdateProduct'); //pass the name of your cron class path
+            ->create('Cento\Automation\Cron\ActualizeProduct'); //pass the name of your cron class path
         $cron->execute();
 
     }

@@ -5,6 +5,7 @@
 			<argument name="commands" xsi:type="array">
 				<item name="ImportProduct" xsi:type="object">Cento\Automation\Console\Command\ImportProduct</item>
                 <item name="ImportManufacturer" xsi:type="object">Cento\Automation\Console\Command\ImportManufacturer</item>
+                <item name="UpdateProduct" xsi:type="object">Cento\Automation\Console\Command\UpdateProduct</item>
 			</argument>
 		</arguments>
 	</type>
