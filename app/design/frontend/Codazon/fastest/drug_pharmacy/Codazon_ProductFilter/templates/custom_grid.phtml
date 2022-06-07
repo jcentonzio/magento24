@@ -44,7 +44,7 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 				    	<?php if($iterator == 0): ?>
 				    		<div class="item product product-item width-1 big-product">
 						        <div class="product-item-info" data-container="product-grid">
-						            <div class="product-images">
+						            <div class="product-images">							        		
 							            <?php
 							            $productImage = $block->getImage($_product, $image);
 							            $productHoverImage = $block->getImage($_product, $image_hover);
@@ -65,35 +65,35 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 											</span>
 							            </a>
 							            </div>
-							            <?php
-		                                        $objectProduct = $_objectManager->get('Magento\Catalog\Model\Product')->load($_product->getId());
-		                                        $_images = $objectProduct->getMediaGalleryImages();
+							            <?php            		                                        								    
+		                                        $objectProduct = $_objectManager->get('Magento\Catalog\Model\Product')->load($_product->getId());		                                        	                            
+		                                        $_images = $objectProduct->getMediaGalleryImages();		                                        		                                            
 		                                        $_wThumbs = 170;
-		                                        $_hThumbs = 170;
-		                                    ?>
+		                                        $_hThumbs = 170;		                                       
+		                                    ?>                          		                                        		                                   
                             				<?php if (count($_images) > 0): ?>
+                        
+				                             <div class="more-views">                                                     
 
-				                             <div class="more-views">
-
-				                                <?php $j=0; foreach($_images as $_image): ?>
+				                                <?php $j=0; foreach($_images as $_image): ?>                                   
 				                                    <?php
 				                                      $thumbImage = $_imageHelper->init($_product, $image)
 				                                      					->setImageFile($_image->getFile())
-				                                          			->resize($_wThumbs,$_hThumbs);
-				                                    ?>
+				                                          			->resize($_wThumbs,$_hThumbs);				                                          							                                      
+				                                    ?>               				                                                         
 				                                    <div class="more-view-img">
 				                                        <a class="thumb-img" href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>">
-				                                              <img src="<?php /* @escapeNotVerified */ echo $thumbImage->getUrl(); ?>"
+				                                              <img src="<?php /* @escapeNotVerified */ echo $thumbImage->getUrl(); ?>" 
 				                                              width="<?php /* @escapeNotVerified */ echo $_wThumbs ?>" alt="<?php echo $block->escapeHtml($thumbImage->getLabel()) ?>" title="<?php echo $block->escapeHtml($thumbImage->getLabel()) ?>" class="img-responsive"/>
 				                                        </a>
 				                                    </div>
 				                                <?php if($j>=3) break;?>
-				                                <?php $j++;?>
+				                                <?php $j++;?>                                
 				                                <?php endforeach; ?>
 				                            </div>
 							            	<?php endif ?>
-							            <?php endif ?>
-							             <?php $labelHelper->showLabel($_product) ?>
+							            <?php endif ?>	
+							             <?php $labelHelper->showLabel($_product) ?>   						        											        
 							        	</div>
 						            <div class="product details product-item-details">
 				                <?php
@@ -110,7 +110,7 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 								<?php if($block->isShow('description')): ?>
 									<?php $desc = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description');
 						$descLength = 100;
-                                    if(strlen($desc)> $descLength ) {
+                                    if(strlen($desc)> $descLength ) { 
                                         $strCutDesc = substr($desc, 0, $descLength);
                                         $desc = substr($strCutDesc, 0, strrpos($strCutDesc, ' ')).'&hellip;';
                                     }
@@ -119,17 +119,17 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
                                     <div class="product description product-item-description">
                                         <?php /* @escapeNotVerified */ echo $desc; ?>
                                     </div>
-                                <?php endif; ?>
+                                <?php endif; ?>	
 								<?php if($block->isShow('price')): ?>
 				                <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
 				                <?php endif ?>
 				                <?php if($block->isShow('review')): ?>
 				                <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
 				                <?php endif ?>
-
+				                
 				                <?php echo $block->getProductDetailsHtml($_product); ?>
 
-
+				                
 				            	<div class="cdz-product-bottom">
                                 	<div class="cdz-buttons-container">
                                     	<div class="cdz-buttons-inner">
@@ -153,7 +153,7 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 				                                    <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
 				                                <?php endif; ?>
 				                            <?php endif; ?>
-
+				                        
 				                        <?php endif ?>
 				                        <?php if($block->isShow('addto')): ?>
 				                        <div data-role="add-to-links" class="actions-secondary"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
@@ -179,22 +179,22 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 				                               role="button">
 				                                <span><?php /* @escapeNotVerified */ echo __('Add to Compare') ?></span>
 				                            </a>
-				                        </div>
+				                        </div>										
 				                        <?php endif ?>
 										<?php echo $this->helper('Codazon\QuickShop\Helper\Data')->getQuickShopButton($_product); ?>
 										</div>
 				                    </div>
-
+				                   
 				                </div>
 				            </div>
 						        </div>
 					        </div>
 			    		<?php else: ?>
-
+			    			
 						        <div class="item product product-item width-2 small-product">
 							        <div class="product-item-info" data-container="product-grid">
 							        	<div class="product-images">
-
+							        		
 							            <?php
 							            $productImage = $block->getImage($_product, $image);
 							        	$productHoverImage = $block->getImage($_product, $image_hover);
@@ -215,10 +215,10 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 											</span>
 							            </a>
 							            </div>
-
+							           
 							            <?php endif ?>
-							        		 <?php $labelHelper->showLabel($_product) ?>
-
+							        		 <?php $labelHelper->showLabel($_product) ?>   
+									        
 							        	</div>
 							            <div class="product details product-item-details">
 							                <?php
@@ -234,7 +234,7 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 							                <?php endif ?>
 											<?php if($block->isShow('description')): ?>
 												<?php $desc = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description');
-			                                    if(strlen($desc)> $descLength ) {
+			                                    if(strlen($desc)> $descLength ) { 
 			                                        $strCutDesc = substr($desc, 0, $descLength);
 			                                        $desc = substr($strCutDesc, 0, strrpos($strCutDesc, ' ')).'&hellip;';
 			                                    }
@@ -243,17 +243,17 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 			                                    <div class="product description product-item-description">
 			                                        <?php /* @escapeNotVerified */ echo $desc; ?>
 			                                    </div>
-			                                <?php endif; ?>
+			                                <?php endif; ?>	
 											<?php if($block->isShow('price')): ?>
 							                <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
 							                <?php endif ?>
 							                <?php if($block->isShow('review')): ?>
 							                <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
 							                <?php endif ?>
-
+							                
 							                <?php echo $block->getProductDetailsHtml($_product); ?>
 
-
+				                
 							            	<div class="cdz-product-bottom">
 			                                	<div class="cdz-buttons-container">
 			                                    	<div class="cdz-buttons-inner">
@@ -277,7 +277,7 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 							                                    <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
 							                                <?php endif; ?>
 							                            <?php endif; ?>
-
+							                        
 							                        <?php endif ?>
 							                        <?php if($block->isShow('addto')): ?>
 							                        <div data-role="add-to-links" class="actions-secondary"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
@@ -303,17 +303,17 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 							                               role="button">
 							                                <span><?php /* @escapeNotVerified */ echo __('Add to Compare') ?></span>
 							                            </a>
-							                        </div>
+							                        </div>										
 							                        <?php endif ?>
 													<?php echo $this->helper('Codazon\QuickShop\Helper\Data')->getQuickShopButton($_product); ?>
 													</div>
-							                    </div>
+							                    </div>							                   
 							                </div>
 				            			</div>
 							        </div>
-						        </div>
+						        </div>														
 				    	<?php endif; ?>
-
+					
 				        <?php $iterator++; ?>
 				    <?php endforeach; ?>
 				</div>
@@ -329,5 +329,5 @@ $labelHelper = $this->helper('Codazon\ProductLabel\Helper\Data');
 				</script>
 			<?php endif; ?>
 		</div>
-	</div>
+	</div>	
 <?php endif ?>
