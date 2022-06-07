@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use GuzzleHttp\Client;
 
-class ImportProduct extends Command
+class UpdatePriceStock extends Command
 {
 
     const NAME_ARGUMENT = "name";
@@ -32,7 +32,7 @@ class ImportProduct extends Command
         $output->writeln("Hello " . $name);
 
         $cron = \Magento\Framework\App\ObjectManager::getInstance()
-            ->create('Cento\Automation\Helper\ImportProduct'); //pass the name of your cron class path
+            ->create('Cento\Automation\Cron\UpdatePriceStock'); //pass the name of your cron class path
         $cron->execute();
 
     }
@@ -42,8 +42,8 @@ class ImportProduct extends Command
      */
     protected function configure()
     {
-        $this->setName("cento_automation:importproduct");
-        $this->setDescription("Import product");
+        $this->setName("cento_automation:updatepricestock");
+        $this->setDescription("Actualizar precio y stock");
         $this->setDefinition([
             new InputArgument(self::NAME_ARGUMENT, InputArgument::OPTIONAL, "Name"),
             new InputOption(self::NAME_OPTION, "-a", InputOption::VALUE_NONE, "Option functionality")

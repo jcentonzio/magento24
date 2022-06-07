@@ -6,6 +6,7 @@
 				<item name="ImportProduct" xsi:type="object">Cento\Automation\Console\Command\ImportProduct</item>
                 <item name="ImportManufacturer" xsi:type="object">Cento\Automation\Console\Command\ImportManufacturer</item>
                 <item name="UpdateProduct" xsi:type="object">Cento\Automation\Console\Command\UpdateProduct</item>
+                <item name="UpdatePriceStock" xsi:type="object">Cento\Automation\Console\Command\UpdatePriceStock</item>
 			</argument>
 		</arguments>
 	</type>

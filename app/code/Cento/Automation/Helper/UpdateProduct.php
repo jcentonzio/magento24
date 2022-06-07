@@ -133,32 +133,33 @@ class UpdateProduct {
     public function execute($productId, $params)
     {
 
+
         $product = $this->productRepository->getById($productId);
+
         $sourceItems = [];
 
-        $sourceCategoryOne = $this->_categories->getFindCategory($params->nombreclasif1);
-        $sourceCategorySecond = $this->_categories->getFindCategory($params->nombreclasif2);
+        $sourceCategoryOne = $this->_categories->getFindCategory($params['nombreclasif1']);
+        $sourceCategorySecond = $this->_categories->getFindCategory($params['nombreclasif2']);
 
         //$categorySet[] = 38;
         $categorySet[] = $sourceCategoryOne['id'];
         $categorySet[] = $sourceCategorySecond['id'];
 
-        $idManufacturer = $this->_addOptionAttribute->findManufacturerOption($params->descripmarca);
+        $idManufacturer = $this->_addOptionAttribute->findManufacturerOption($params['descripmarca']);
 
         try {
 
-            echo "importando producto";
-            echo "</br>";
+            echo "Actualizando producto {$product->getSku()} \n";
 
-            $nombre = "{$params->codigo}-{$params->nombre}";
+            $nombre = "{$params['codigo']}-{$params['nombre']}";
 
-            $product->unsetData();
+            //$product->unsetData();
             $product->setTypeId('simple')
                 ->setAttributeSetId(4)
                 ->setWebsiteIds([1])
                 ->setName($nombre)
-                ->setSku($params->codigo)
-                ->setPrice($params->preciominorista)
+                ->setSku($params['codigo'])
+                ->setPrice($params['preciominorista'])
                 ->setWeight(1)
                 ->setManufacturer($idManufacturer)
                 ->setVisibility(4)
@@ -167,21 +168,12 @@ class UpdateProduct {
                 ->setCategoryIds($categorySet);
 
             $imagePath = $this->directoryList->getPath('pub');
-            $fileName = $params->codigo;
+            $fileName = $params['codigo'];
 
             for ($i = 3; $i < 12; $i++) {
                 $path = $imagePath . '/media/import-images/product/'. $fileName . '-'. $i .  '.jpg';
                 if($this->_fileDriver->isExists($path)) {
-                    $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
-                    $logger = new \Zend\Log\Logger();
-                    $logger->addWriter($writer);
-                    $logger->info("se encontro archivo {$path}");
                     $product->addImageToMediaGallery($path, array('image', 'small_image', 'thumbnail'), true, false);
-                } else {
-                    $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
-                    $logger = new \Zend\Log\Logger();
-                    $logger->addWriter($writer);
-                    $logger->info("no se encontro archivo {$path}");
                 }
             }
 
@@ -189,7 +181,7 @@ class UpdateProduct {
 
             $stockData = [
                 'is_in_stock' => 1,
-                'qty' => $params->stock,
+                'qty' => $params['stock'],
                 'manage_stock' => 1,
             ];
 
@@ -202,7 +194,7 @@ class UpdateProduct {
 
             $tierPriceData = $this->productTierPriceFactory->create();
 
-            $precioMayorista = "{$params->preciomayorista}.01";
+            $precioMayorista = "{$params['preciomayorista']}.01";
 
             $precioMayorista = floatval($precioMayorista);
 
@@ -212,10 +204,9 @@ class UpdateProduct {
 
             $this->tierPrice->add($product->getSku(), $tierPriceData);
 
-            echo "Finalizado con exito";
 
         } catch (\Exception $e) {
-            echo "Error: {$e->getMessage()}";
+            echo "Error: {$e->getMessage()} \n";
         }
     }
 

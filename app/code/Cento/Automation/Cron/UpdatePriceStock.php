@@ -3,17 +3,17 @@
 declare(strict_types=1);
 
 namespace Cento\Automation\Cron;
-use Cento\Automation\Helper\UpdateProduct;
+use Cento\Automation\Helper\PriceStock;
 use Cento\Automation\Helper\Service;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
 
-class ActualizeProduct
+class UpdatePriceStock
 {
 
     protected $logger;
     protected $_service;
     protected $_appState;
-    protected $_updateProduct;
+    protected $_priceStock;
 
     /**
      * Constructor
@@ -25,14 +25,14 @@ class ActualizeProduct
         Collection $collection,
         Service $service,
         \Magento\Framework\App\State $appState,
-        UpdateProduct $updateProduct
+        PriceStock $priceStock
     )
     {
         $this->logger = $logger;
         $this->_collection = $collection;
         $this->_service = $service;
         $this->_appState = $appState;
-        $this->_updateProduct = $updateProduct;
+        $this->_priceStock = $priceStock;
     }
 
     /**
@@ -59,7 +59,7 @@ class ActualizeProduct
 
             $sourceProduct = $sourceProduct['datos']['0'];
 
-            $this->_updateProduct->execute($product->getData('entity_id'), $sourceProduct);
+            $this->_priceStock->execute($product->getData('entity_id'), $sourceProduct);
 
         }
 

@@ -132,6 +132,7 @@ class CreateProduct {
 
     public function execute($params)
     {
+        echo "Importando producto {$params->codigo} \n";
 
         $product = $this->_productFactory->create();
         $sourceItems = [];
@@ -147,8 +148,6 @@ class CreateProduct {
 
         try {
 
-                echo "importando producto";
-                echo "</br>";
 
                 $nombre = "{$params->codigo}-{$params->nombre}";
 
@@ -210,12 +209,13 @@ class CreateProduct {
                 ->setQty(1.00)
                 ->setValue($precioMayorista);
 
+
             $this->tierPrice->add($product->getSku(), $tierPriceData);
 
-            echo "Finalizado con exito";
+            //echo "Finalizado con exito \n";
 
         } catch (\Exception $e) {
-            echo "Error: {$e->getMessage()}";
+            print "Error: {$e->getMessage()} \n";
         }
     }
 
