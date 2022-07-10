@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="cento" translate="label" sortOrder="999">
+			<label>cento</label>
+		</tab>
+		<section id="cento" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>cento</label>
+			<tab>cento</tab>
+			<resource>Cento_Automation::config_cento_automation</resource>
+			<group id="cento" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>Endpoints</label>
+				<field id="manufacturer" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Manufacturer</label>
+					<comment/>
+				</field>
+				<field id="product_category" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Productos por categoria</label>
+					<comment/>
+				</field>
+				<field id="category_id" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Categoria ID</label>
+					<comment/>
+				</field>
+				<field id="product" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Producto</label>
+					<comment/>
+				</field>
+				<field id="client" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Clientes</label>
+					<comment/>
+				</field>
+				<field id="sale" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Ventas</label>
+					<comment/>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

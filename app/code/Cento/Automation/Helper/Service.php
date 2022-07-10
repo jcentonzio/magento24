@@ -13,9 +13,15 @@ use Psr\Log\LoggerInterface;
 
 class Service
 {
-    public function __construct(LoggerInterface $logger)
+    protected $scopeConfig;
+
+    public function __construct(
+        LoggerInterface $logger,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+    )
     {
         $this->logger = $logger;
+        $this->scopeConfig = $scopeConfig;
     }
 
     public function getManufacturer() {
@@ -24,7 +30,8 @@ class Service
 
             $client = new Client();
 
-            $response = $client->get('http://161.35.232.26:5030/busa/marcas');
+            // http://161.35.232.26:5030/busa/marcas
+            $response = $client->get($this->scopeConfig->getValue('cento/cento/manufacturer'));
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
@@ -49,7 +56,9 @@ class Service
                 ]
             ];
 
-            $response = $client->post('http://161.35.232.26:5030/busa/filtroproducto', ["json" => $params]);
+            // http://161.35.232.26:5030/busa/filtroproducto
+
+            $response = $client->post($this->scopeConfig->getValue('cento/cento/product_category'), ["json" => $params]);
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
@@ -73,8 +82,9 @@ class Service
                     "codigo" => $sku
                 ]
             ];
+            // http://161.35.232.26:5030/busa/elproducto
 
-            $response = $client->post('http://161.35.232.26:5030/busa/elproducto', ["json" => $params]);
+            $response = $client->post($this->scopeConfig->getValue('cento/cento/product'), ["json" => $params]);
 
             if ($response->getStatusCode() !== 200) {
                 throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());

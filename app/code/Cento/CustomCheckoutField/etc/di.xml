@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="cento_custom_checkout_form" type="Cento\CustomCheckoutField\Plugin\Checkout\Block\Checkout\LayoutProcessor" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="cento_customcheckoutfield_before_save_address_information" type="Cento\CustomCheckoutField\Plugin\Checkout\Model\ShippingInformationManagement" sortOrder="1" />
+    </type>
+</config>

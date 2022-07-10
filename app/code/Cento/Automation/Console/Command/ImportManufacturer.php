@@ -43,7 +43,7 @@ class ImportManufacturer extends Command
     protected function configure()
     {
         $this->setName("cento_automation:importmanufacturer");
-        $this->setDescription("Import manufacturer");
+        $this->setDescription("Importar marcas");
         $this->setDefinition([
             new InputArgument(self::NAME_ARGUMENT, InputArgument::OPTIONAL, "Name"),
             new InputOption(self::NAME_OPTION, "-a", InputOption::VALUE_NONE, "Option functionality")

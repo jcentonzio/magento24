@@ -7,6 +7,7 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 	<body>
+    <referenceBlock name="catalog.compare.link" remove="true" />
 	<referenceContainer name="header.wrapper.content">
 		<container name="header.wrapper.content.container" htmlClass="header content" htmlTag="div">
 			<container name="header.wrapper.row" htmlClass="row" htmlTag="div">
@@ -36,28 +37,28 @@
 				<container htmlClass="col-sm-24 col-md-10 col-lg-8" htmlTag="div">
 					<container name="header.bottom.right" htmlClass="header-bottom-right pull-right" label="Header Bottom Right" htmlTag="div" />
 				</container>
-			</container>				
+			</container>
 		</container>
 	</referenceContainer>
-	
-	
+
+
 	<referenceContainer name="header.container" htmlClass="page-header">
 		<container label="Header Before Slideshow" name="header.before.slidershow" htmlTag="div" htmlClass="before-slideshow-area" before="-">
 			<container name="header.box" htmlClass="box-header" htmlTag="div" before="-">
 				<container name="panel.wrapper.top" htmlClass="panel wrapper" htmlTag="div" before="-">
-				</container>					
+				</container>
 			</container>
-		</container>			
+		</container>
 	</referenceContainer>
-	
+
 	<move element="logo" destination="logo.left" />
 	<move element="minicart" destination="header.wrapper.right" />
-    
-    
+
+
 	<block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-dropdown" template="account/link/authorization_dropdown.phtml" after="-" />
     <move element="store_switcher" destination="header.bottom.right" />
 	<move element="store_language" destination="header.bottom.right" />
-    <move element="authorization-link-dropdown" destination="header.bottom.right" />    
+    <move element="authorization-link-dropdown" destination="header.bottom.right" />
 	<move element="currency" destination="header.bottom.right" />
     <container name="dropdown-account-links" htmlTag='ul' htmlClass='account-links'>
         <block class="Magento\Customer\Block\Account\RegisterLink" name="account-register-link">
@@ -84,13 +85,13 @@
         </block>
     </container>
     <move element="customer_form_login_mini" destination="authorization-link-dropdown" before="-" />
-    <move element="dropdown-account-links" destination="authorization-link-dropdown" after="-" />  
+    <move element="dropdown-account-links" destination="authorization-link-dropdown" after="-" />
 	<referenceBlock name="logo">
 		<arguments>
 			<argument name="logo_img_width" xsi:type="number">316</argument>
 			<argument name="logo_img_height" xsi:type="number">67</argument>
 		</arguments>
 	</referenceBlock>
-	
+
 	</body>
 </page>
