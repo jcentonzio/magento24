@@ -5,4 +5,7 @@
     <type name="Magento\Checkout\Model\ShippingInformationManagement">
         <plugin name="cento_customcheckoutfield_before_save_address_information" type="Cento\CustomCheckoutField\Plugin\Checkout\Model\ShippingInformationManagement" sortOrder="1" />
     </type>
+    <type name="Magento\Checkout\Block\Checkout\AttributeMerger">
+        <plugin name="cento_checkout_phone_number" type="Cento\CustomCheckoutField\Plugin\Checkout\Block\Checkout\PhonePlugin" sortOrder="1" />
+    </type>
 </config>
