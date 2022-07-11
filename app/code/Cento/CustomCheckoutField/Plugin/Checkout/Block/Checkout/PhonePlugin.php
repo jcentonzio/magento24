@@ -13,20 +13,21 @@ class PhonePlugin
      */
     public function afterMerge(AttributeMerger $subject, $result)
     {
+
+        $result['telephone']['config'] = [
+            'template' => 'ui/form/field',
+            'elementTmpl' => 'ui/form/element/input',
+            'placeholder' => 'Ej: 987654321 (9 dígitos)',
+            'tooltip' => ''
+        ];
+
+
         $result['telephone']['validation'] = [
             'required-entry'  => true,
             'max_text_length' => 9,
             'validate-number' => true
         ];
 
-        $result['telephone']['config'] = [
-            'customScope' => 'shippingAddress.custom_attributes',
-            'customEntry' => null,
-            'template' => 'ui/form/field',
-            'elementTmpl' => 'ui/form/element/input',
-            'placeholder' => 'Ej: 987654321 (9 dígitos)',
-            'tooltip' => false
-        ];
 
         return $result;
     }
