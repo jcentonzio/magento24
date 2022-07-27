@@ -32,7 +32,7 @@ class ImportProduct extends Command
         $output->writeln("Hello " . $name);
 
         $cron = \Magento\Framework\App\ObjectManager::getInstance()
-            ->create('Cento\Automation\Helper\ImportProduct'); //pass the name of your cron class path
+            ->create('Cento\Automation\Cron\ImportProduct'); //pass the name of your cron class path
         $cron->execute();
 
     }

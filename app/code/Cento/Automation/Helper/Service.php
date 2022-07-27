@@ -52,7 +52,7 @@ class Service
 
             $params = [
                 "data" => [
-                    "categoria" => "4"
+                    "categoria" => $this->scopeConfig->getValue('cento/cento/category_id')
                 ]
             ];
 

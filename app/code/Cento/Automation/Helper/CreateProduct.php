@@ -149,7 +149,7 @@ class CreateProduct {
         try {
 
 
-                $nombre = "{$params->codigo}-{$params->nombre}";
+                $nombre = "{$params->nombre}-{$params->codigo}";
 
                 $product->unsetData();
                 $product->setTypeId('simple')
