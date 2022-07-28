@@ -4,9 +4,9 @@
      * See COPYING.txt for license details.
      */
     use Magento\Framework\App\Action\Action;
-    
+
     // @codingStandardsIgnoreFile
-    
+
     ?>
 <?php
     /**
@@ -43,7 +43,7 @@
     $ajaxLayerNavEnabled = $objectManager->get('\Magento\Framework\Module\Manager')->isOutputEnabled('Codazon_AjaxLayeredNav');
     $hideGallery = $_optionHelper->getConfig('general_section/category_view/category_layout/hide_gallery');
     $hideSidebar = $_optionHelper->getConfig('general_section/category_view/category_layout/hide_sidebar') && $showToggleBtn;
-    
+
     $showHover = $_optionHelper->getConfig('general_section/category_view/hover_product_effect');
     $grid_class = [
         '1' => [
@@ -57,7 +57,7 @@
             0    => 'mobile_'.$_optionHelper->getConfig('general_section/category_view/category_mobile_view/product_row_mobile')
         ]
     ];
-        
+
     $viewMode = 'grid';
     $image = 'category_page_grid';
     $image_hover = 'category_page_grid_hover';
@@ -70,22 +70,22 @@
         $columnsTabClass = 'tablet_'.$_optionHelper->getConfig('general_section/category_view/category_tablet_view/product_row_tablet_1col');
     }else{
         switch ($pageColumn) {
-            case '3columns':                                
+            case '3columns':
                 $columnsDeskClass = 'desktop_'.$_optionHelper->getConfig('general_section/category_view/category_desktop_view/product_row_desk_3col');
                 $columnsTabClass = 'tablet_'.$_optionHelper->getConfig('general_section/category_view/category_tablet_view/product_row_tablet_3col');
                 break;
-            case '1column':                 
+            case '1column':
                 $columnsDeskClass = 'desktop_'.$_optionHelper->getConfig('general_section/category_view/category_desktop_view/product_row_desk_1col');
                 $columnsTabClass = 'tablet_'.$_optionHelper->getConfig('general_section/category_view/category_tablet_view/product_row_tablet_1col');
                 break;
-            case '2columns':                    
+            case '2columns':
                 $columnsDeskClass = 'desktop_'.$_optionHelper->getConfig('general_section/category_view/category_desktop_view/product_row_desk_2col');
                 $columnsTabClass = 'tablet_'.$_optionHelper->getConfig('general_section/category_view/category_tablet_view/product_row_tablet_2col');
                 break;
-            default:                    
+            default:
                 $columnsDeskClass = 'desktop_'.$_optionHelper->getConfig('general_section/category_view/category_desktop_view/product_row_desk_2col');
                 $columnsTabClass = 'tablet_'.$_optionHelper->getConfig('general_section/category_view/category_tablet_view/product_row_tablet_2col');
-                break;  
+                break;
         }
     }
     $columnsMobileClass = 'mobile_'.$_optionHelper->getConfig('general_section/category_view/category_mobile_view/product_row_mobile');
@@ -96,13 +96,13 @@
     ];
     $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     $isList = ($block->getMode() == 'list');
-    
+
     if ($isList) {
         $viewMode = 'list';
         $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
         $columnsClass = 'desk_1';
     } else {
-        if(!$_mobileHelper->isMobile()){	
+        if(!$_mobileHelper->isMobile()){
             $columnsClass = $columnsDeskClass;
         }else if($_mobileHelper->isTablet()){
             $columnsClass = $columnsTabClass;
@@ -152,7 +152,7 @@ if(typeof document.body.attributes['data-mage-init'] !== 'undefined') {
             <div class="product-item-info" data-container="product-grid">
                 <div class="cdz-hover-section">
                     <div class="cdz-product-top">
-                        <?php                       
+                        <?php
                             $productImage = $block->getImage($_product, $image);
                             $productHoverImage = $block->getImage($_product, $image_hover);
                             if ($pos != null) {
@@ -182,9 +182,6 @@ if(typeof document.body.attributes['data-mage-init'] !== 'undefined') {
                     <?php endif ?>
                 </div>
                 <div class="product details product-item-details">
-                    <?php if (!$hideGallery) :  ?>
-                    <?php echo (!$isList)?$gallery->setProduct($_product)->toHtml():''; ?>
-                    <?php endif ?>
                     <div class="info-details">
                         <?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
                         <strong class="product name product-item-name">
@@ -194,7 +191,7 @@ if(typeof document.body.attributes['data-mage-init'] !== 'undefined') {
                         </strong>
                         <?php echo $block->getProductPrice($_product) ?>
                         <?php if($showReviewRating): ?>
-                        <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?> 
+                        <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
                         <?php endif ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
                         <?php if ($showDescription) : ?>
@@ -215,14 +212,14 @@ if(typeof document.body.attributes['data-mage-init'] !== 'undefined') {
                                         <input type="hidden" name="<?php  echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php  echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
                                         <?php echo $block->getBlockHtml('formkey')?>
                                         <?php if ($filterHelper->shouldRenderQuantity($_product)): ?>
-                                        <?php 
+                                        <?php
                                             $qtyIncrements = 1;
                                             $dataValidate = $filterHelper->getQuantityValidators($_product);
                                             if(isset($dataValidate["validate-item-quantity"]["qtyIncrements"])){
                                                 $qtyIncrements = $dataValidate["validate-item-quantity"]["qtyIncrements"];
                                             }
                                         ?>
-                                        <div class="field qty box-tocart">                                         
+                                        <div class="field qty box-tocart">
                                             <div class="control">
                                                 <div class="qty-minus"> <a class="btn-qty minus" href="javascript:void(0)">-</a></div>
                                                 <div class="qty-input">
@@ -250,7 +247,7 @@ if(typeof document.body.attributes['data-mage-init'] !== 'undefined') {
                                 <?php endif; ?>
                                 <?php endif; ?>
                             </div>
-                            
+
                             <div class="product-actions-right">
                                 <?php if($showCompareWishlist): ?>
                                 <div data-role="add-to-links" class="actions-secondary"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
