@@ -22,10 +22,8 @@ class PriceStock
      */
     protected $productRepository;
 
-    /**
-     * @var Magento\CatalogInventory\Api\StockRegistryInterface
-     */
-    protected $_stockRegistry;
+    protected $resourceConnection;
+
 
     /**
      * @var ScopedProductTierPriceManagementInterface
@@ -41,16 +39,16 @@ class PriceStock
 
         \Magento\Catalog\Model\ResourceModel\Product $resourceModel,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
-        \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry,
         ScopedProductTierPriceManagementInterface $tierPrice,
-        ProductTierPriceInterfaceFactory $productTierPriceFactory
+        ProductTierPriceInterfaceFactory $productTierPriceFactory,
+        \Magento\Framework\App\ResourceConnection $resourceConnection
     )
     {
         $this->_resourceModel = $resourceModel;
         $this->productRepository = $productRepository;
-        $this->_stockRegistry = $stockRegistry;
         $this->tierPrice = $tierPrice;
         $this->productTierPriceFactory = $productTierPriceFactory;
+        $this->resourceConnection = $resourceConnection;
     }
 
     public function execute($productId, $params)
@@ -64,20 +62,8 @@ class PriceStock
 
             $product->setPrice($params['preciominorista']);
 
-            $this->_resourceModel->save($product);
-
-            $stockData = [
-                'is_in_stock' => 1,
-                'qty' => $params['stock'],
-                'manage_stock' => 1,
-            ];
-
-            $stockItem= $this->_stockRegistry->getStockItem($product->getId()); // load stock of that product
-            $stockItem->setData('is_in_stock',$stockData['is_in_stock']); //set updated data as your requirement
-            $stockItem->setData('qty',$stockData['qty']); //set updated quantity
-            $stockItem->setData('manage_stock',$stockData['manage_stock']);
-            $stockItem->setData('use_config_notify_stock_qty',1);
-            $stockItem->save();
+            //$this->_resourceModel->save($product);
+            $this->_resourceModel->saveAttribute($product, 'price');
 
             $tierPriceData = $this->productTierPriceFactory->create();
 
@@ -90,6 +76,21 @@ class PriceStock
                 ->setValue($precioMayorista);
 
             $this->tierPrice->add($product->getSku(), $tierPriceData);
+
+            $connection = $this->resourceConnection->getConnection();
+
+            if($params['stock'] > 0) {
+                $stockStatus = 1;
+            } else {
+                $stockStatus = 0;
+            }
+
+            $data = ["qty"=>$params['stock'], "is_in_stock" => $stockStatus];
+            $id = $productId;
+            $where = ['product_id = ?' => (int)$id];
+
+            $tableName = $connection->getTableName("cataloginventory_stock_item");
+            $connection->update($tableName, $data, $where);
 
 
         } catch (\Exception $e) {
