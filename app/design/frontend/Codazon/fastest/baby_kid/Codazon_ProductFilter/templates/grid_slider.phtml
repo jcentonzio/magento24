@@ -35,7 +35,7 @@
     </div>
     <?php endif ?>
     <div class="block-content">
-        <div class="products gallery-grid products-grid wrapper same-height <?php echo $viewMode; ?> products-<?php echo $viewMode; ?>"> 
+        <div class="products gallery-grid products-grid wrapper same-height <?php echo $viewMode; ?> products-<?php echo $viewMode; ?>">
             <?php $iterator = 1; ?>
             <div class="products list items product-items <?php echo $block->getData('show_slider') ? 'cdz-slider' : '' ?>"
                 <?php if($block->getData('show_slider')) : ?>
@@ -43,8 +43,8 @@
                 data-items="<?php echo $slider_item ?>"
                 data-items-0="2"
                 data-items-480="2"
-                data-items-768="<?php echo abs($slider_item - 3) ?>"                      
-                data-items-1024="<?php echo abs($slider_item - 2) ?>" 
+                data-items-768="<?php echo abs($slider_item - 3) ?>"
+                data-items-1024="<?php echo abs($slider_item - 2) ?>"
                 data-items-1280="<?php echo abs($slider_item - 1) ?>"
                 data-items-1440="<?php echo $slider_item ?>"
                 data-loop="false"
@@ -81,7 +81,6 @@
                         </div>
                     </div>
                     <div class="product details product-item-details">
-                        <?php echo $gallery->setProduct($_product)->toHtml(); ?>
                         <div class="info-details">
                             <?php $_productNameStripped = $block->stripTags($_product->getName(), null, true); ?>
                             <?php if($block->isShow('name')): ?>
@@ -120,14 +119,14 @@
                                             <?php echo $block->getBlockHtml('formkey')?>
                                             <?php if ($filterHelper->shouldRenderQuantity($_product)): ?>
 
-                                            <?php 
+                                            <?php
                                                 $qtyIncrements = 1;
                                                 $dataValidate = $filterHelper->getQuantityValidators($_product);
                                                 if(isset($dataValidate["validate-item-quantity"]["qtyIncrements"])){
                                                     $qtyIncrements = $dataValidate["validate-item-quantity"]["qtyIncrements"];
                                                 }
                                             ?>
-                                            <div class="field qty box-tocart">                                         
+                                            <div class="field qty box-tocart">
                                                 <div class="control">
                                                     <div class="qty-minus"> <a class="btn-qty minus" href="javascript:void(0)">-</a></div>
                                                     <div class="qty-input">
@@ -156,7 +155,7 @@
                                     <?php endif; ?>
                                 </div>
                                 <?php endif ?>
-                                
+
                                 <div class="product-actions-right">
                                     <?php if($block->isShow('addto')): ?>
                                     <div data-role="add-to-links" class="actions-secondary"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
