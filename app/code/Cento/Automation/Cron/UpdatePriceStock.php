@@ -76,12 +76,6 @@ class UpdatePriceStock
 
                 $sourceProduct = $this->_service->updateProduct($sku);
 
-                if($sourceProduct['stock'] > 0) {
-                    $stockStatus = 1;
-                } else {
-                    $stockStatus = 0;
-                }
-
                 if(!isset($sourceProduct)) {
                     $i++;
                     if($i < 5) {
@@ -96,6 +90,12 @@ class UpdatePriceStock
                 $sourceProduct = json_decode($sourceProduct, true);
 
                 $sourceProduct = $sourceProduct['datos']['0'];
+
+                if($sourceProduct['stock'] > 0) {
+                    $stockStatus = 1;
+                } else {
+                    $stockStatus = 0;
+                }
 
                 //$this->_priceStock->execute($product->getData('entity_id'), $sourceProduct);
 
