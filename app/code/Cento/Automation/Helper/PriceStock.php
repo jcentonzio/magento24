@@ -60,14 +60,14 @@ class PriceStock
 
             echo "Actualizando producto {$product->getSku()} \n";
 
-            $product->setPrice($params['preciominorista']);
+            $product->setPrice($params['minoristabruto']);
 
             //$this->_resourceModel->save($product);
             $this->_resourceModel->saveAttribute($product, 'price');
 
             $tierPriceData = $this->productTierPriceFactory->create();
 
-            $precioMayorista = "{$params['preciomayorista']}.01";
+            $precioMayorista = "{$params['mayoristaneto']}.01";
 
             $precioMayorista = floatval($precioMayorista);
 
