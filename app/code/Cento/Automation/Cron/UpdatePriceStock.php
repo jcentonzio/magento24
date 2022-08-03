@@ -64,7 +64,7 @@ class UpdatePriceStock
             $stream = $this->directory->openFile($filepath, 'w+');
             $stream->lock();
 
-            $header = ['sku', 'price', 'tier_price_website', 'tier_price_customer_group', 'tier_price_qty', 'tier_price', 'tier_price_value_type'];
+            $header = ['sku', 'price', 'qty', 'is_in_stock', 'tier_price_website', 'tier_price_customer_group', 'tier_price_qty', 'tier_price', 'tier_price_value_type'];
             $stream->writeCsv($header);
 
             $i = 0;
@@ -75,6 +75,12 @@ class UpdatePriceStock
                 $sku = $product->getData('sku');
 
                 $sourceProduct = $this->_service->updateProduct($sku);
+
+                if($sourceProduct['stock'] > 0) {
+                    $stockStatus = 1;
+                } else {
+                    $stockStatus = 0;
+                }
 
                 if(!isset($sourceProduct)) {
                     $i++;
@@ -96,6 +102,8 @@ class UpdatePriceStock
                 $data = [];
                 $data[] = $product->getSku();
                 $data[] = $sourceProduct['minoristabruto'];
+                $data[] = $sourceProduct['stock'];
+                $data[] = $stockStatus;
                 $data[] = "All Websites [CLP]";
                 $data[] = "Mayorista";
                 $data[] = "1";
