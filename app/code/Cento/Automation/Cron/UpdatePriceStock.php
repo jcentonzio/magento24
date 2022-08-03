@@ -83,6 +83,8 @@ class UpdatePriceStock
                     } else {
                         exit;
                     }
+                } else {
+                    $i = 0;
                 }
 
                 $sourceProduct = json_decode($sourceProduct, true);
