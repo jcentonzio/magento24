@@ -82,19 +82,15 @@ class Service
                     "codigo" => $sku
                 ]
             ];
-            // http://161.35.232.26:5030/busa/elproducto
 
-            $response = $client->post($this->scopeConfig->getValue('cento/cento/product'), ["json" => $params]);
-
-            if ($response->getStatusCode() !== 200) {
-                throw new \InvalidArgumentException('There was a problem: ' . $response->getBody());
-            }
+            $response = $client->post($this->scopeConfig->getValue('cento/cento/product'),  ["json" => $params, 'timeout' => 20,
+                'connect_timeout' => 10]);
 
             return (string)$response->getBody();
 
         } catch (\Exception $ex) {
+            echo "{$ex->getMessage()} \n";
             $this->logger->critical($ex->getMessage());
-            throw $ex;
         }
     }
 
