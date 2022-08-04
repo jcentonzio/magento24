@@ -323,6 +323,7 @@ return [
         'Codazon_Utility' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Dotdigitalgroup_Chat' => 1,
+        'EthanYehuda_CronjobManager' => 1,
         'Flurrybox_EnhancedPrivacy' => 1,
         'Harrigo_EverCrumbs' => 1,
         'Klarna_Core' => 1,

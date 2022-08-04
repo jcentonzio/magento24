@@ -13139,7 +13139,7 @@ Display Printed Card Prices,Ver precios de tarjeta impresa,module,Magento_GiftWr
 Edit,Editar,module,Magento_GiftWrapping
 "Edit Gift Wrapping ""%1""","Editar envoltura de regalo ""%1""",module,Magento_GiftWrapping
 Enabled,Habilitado,module,Magento_GiftWrapping
-Excl. Tax,Excl. Impuesto,module,Magento_GiftWrapping
+Excl. Tax,Excl. Iva,module,Magento_GiftWrapping
 Excluding Tax,Impuestos no incluídos,module,Magento_GiftWrapping
 Gift receipt,Recibo de regalo,module,Magento_GiftWrapping
 Gift Wrap Design,Diseño de envoltura de regalo,module,Magento_GiftWrapping
@@ -13166,7 +13166,7 @@ Please select,"Por favor, seleccione",module,Magento_GiftWrapping
 Please select items.,Seleccione artículos.,module,Magento_GiftWrapping
 Preview,Vista previa,module,Magento_GiftWrapping
 Price,Precio,module,Magento_GiftWrapping
-Price Excl. Tax,Precio excl. impuesto,module,Magento_GiftWrapping
+Price Excl. Tax,Precio excl. iva,module,Magento_GiftWrapping
 Price Incl. Tax,Precio incl. impuestos,module,Magento_GiftWrapping
 Printed Card,Tarjeta impresa,module,Magento_GiftWrapping
 Provided image name contains forbidden characters.,Nombre de archivo que provee contiene caracteres prohibidos.,module,Magento_GiftWrapping
@@ -14237,7 +14237,7 @@ Edit Shipping Address,Modificar dirección de envío,module,Magento_Multishippin
 Enter a New Address,Ingresar una nueva dirección,module,Magento_Multishipping
 Error:,Error:,module,Magento_Multishipping
 Exception for failed order not found.,Excepción para pedido erróneo no encontrada.,module,Magento_Multishipping
-Excl. Tax,Excl. Impuesto,module,Magento_Multishipping
+Excl. Tax,Excl. Iva,module,Magento_Multishipping
 Failed to Order,Falló el pedido,module,Magento_Multishipping
 "For details, see","Para mas detalles, vea",module,Magento_Multishipping
 "For successfully order items, you'll receive a confirmation email including order numbers, tracking information and more details.","Para los artículos pedidos correctamente, recibirá un correo electrónico de confirmación con los números de pedido, la información de seguimiento y más detalles.",module,Magento_Multishipping
@@ -16261,7 +16261,7 @@ Something went wrong during the item options declaration.,Algo salió mal durant
 Something went wrong. Please try to place the order again.,"Algo salió mal. Por favor, intente hacer el pedido de nuevo.",module,Magento_Quote
 Store Credit,Crédito de tienda,module,Magento_Quote
 Subtotal,Subtotal,module,Magento_Quote
-Tax,Impuesto,module,Magento_Quote
+Tax,Iva,module,Magento_Quote
 "The ""%1"" Cart doesn't contain products.","El carrito ""%1"" no contiene productos.",module,Magento_Quote
 The %1 Cart doesn't contain the %2 item.,El carrito %1 no contiene el artículo %2.,module,Magento_Quote
 The address failed to save. Verify the address and try again.,La dirección no se pudo guardar. Verifique la dirección y vuelva a intentarlo.,module,Magento_Quote
@@ -16945,7 +16945,7 @@ Statistics,Estadísticas,module,Magento_Reports
 Stock Quantity,Cantidad de stock,module,Magento_Reports
 Subtotal,Subtotal,module,Magento_Reports
 "System configuration is not found for report event type ""%1""","No se encuentra la configuración del sistema para el tipo de evento de informe ""%1""",module,Magento_Reports
-Tax,Impuesto,module,Magento_Reports
+Tax,Iva,module,Magento_Reports
 Tax Amount,Importe de impuestos,module,Magento_Reports
 Tax Report,Reporte de impuestos,module,Magento_Reports
 The Order Updated report is created in real time and does not require a refresh.,El informe actualizado de la orden se crea en tiempo real y no requiere una actualización.,module,Magento_Reports
@@ -18472,7 +18472,7 @@ Subtotal (Incl. Tax),Subtotal (incl. impuestos),module,Magento_Sales
 Subtotal after discount,Subtotal después del descuento,module,Magento_Sales
 Subtotal:,Subtotal:,module,Magento_Sales
 Suspected Fraud,Sospechas de acto fraudulento,module,Magento_Sales
-Tax,Impuesto,module,Magento_Sales
+Tax,Iva,module,Magento_Sales
 Tax Amount,Importe de impuestos,module,Magento_Sales
 Tax Percent,Porcentaje de impuestos,module,Magento_Sales
 Template,Plantilla,module,Magento_Sales
@@ -20613,7 +20613,7 @@ Subtotal (Excl.Tax),Subtotal (excl. impuestos),module,Magento_Tax
 Subtotal (Incl. Tax),Subtotal (Incl. tax.),module,Magento_Tax
 Subtotal (Incl.Tax),Subtotal (incl. impuestos),module,Magento_Tax
 Subtotal Only,Solo Subtotal,module,Magento_Tax
-Tax,Impuesto,module,Magento_Tax
+Tax,Iva,module,Magento_Tax
 Tax Calculation Based On,Cálculo tributario basado en,module,Magento_Tax
 Tax Calculation Method Based On,Método de cálculo tributario basado en,module,Magento_Tax
 Tax Class for Shipping,Clase de impuestos para envíos,module,Magento_Tax
@@ -22126,7 +22126,7 @@ Including FPT only,Includir sólo FPT,module,Magento_Weee
 label_value,label_value,module,Magento_Weee
 label_value' 'label_value' 'frontend_label,label_value' 'label_value' 'frontend_label,module,Magento_Weee
 Set unique country-state combinations within the same fixed product tax. Verify the combinations and try again.,Establezca combinaciones únicas de país-estado dentro del mismo impuesto fijo sobre el producto. Verifique las combinaciones e intente nuevamente.,module,Magento_Weee
-Tax,Impuesto,module,Magento_Weee
+Tax,Iva,module,Magento_Weee
 Total,Total,module,Magento_Weee
 Total Incl. Tax,Total con impuestos incluidos,module,Magento_Weee
 "We found a duplicate of website, country and state fields for a fixed product tax","Se encontró un duplicado de los campos de página web, país y estado para un impuesto fijo del producto",module,Magento_Weee
@@ -24188,9 +24188,9 @@ Submit refund successfully.,Envíe el reembolso correctamente.,module,Magestore_
 Subtotal,Total parcial,module,Magestore_PurchaseOrderSuccess
 Supplier SKU,SKU del proveedor,module,Magestore_PurchaseOrderSuccess
 Supply Need Products,Productos de necesidad de suministro,module,Magestore_PurchaseOrderSuccess
-Tax,Impuesto,module,Magestore_PurchaseOrderSuccess
-Tax (%),Impuesto (%),module,Magestore_PurchaseOrderSuccess
-Tax(%),Impuesto(%),module,Magestore_PurchaseOrderSuccess
+Tax,Iva,module,Magestore_PurchaseOrderSuccess
+Tax (%),Iva (%),module,Magestore_PurchaseOrderSuccess
+Tax(%),Iva(%),module,Magestore_PurchaseOrderSuccess
 Telephone: ,Teléfono:,module,Magestore_PurchaseOrderSuccess
 This invoice item was not created.,No se creó este elemento de factura.,module,Magestore_PurchaseOrderSuccess
 This invoice was not created.,Esta factura no se creó.,module,Magestore_PurchaseOrderSuccess
@@ -24630,7 +24630,7 @@ Supplier Name,Nombre del proveedor,module,Magestore_SupplierSuccess
 Supplier SKU,SKU del proveedor,module,Magestore_SupplierSuccess
 Supplier Success,Éxito del Proveedor,module,Magestore_SupplierSuccess
 "Supplier with id ""%1"" does not exist.","El proveedor con el ID ""%1"" no existe.",module,Magestore_SupplierSuccess
-Tax,Impuesto,module,Magestore_SupplierSuccess
+Tax,Iva,module,Magestore_SupplierSuccess
 Telephone,Teléfono,module,Magestore_SupplierSuccess
 The price list are created,La lista de precios ha sido creada,module,Magestore_SupplierSuccess
 The price list have been imported.,La lista de precios ha sido importada.,module,Magestore_SupplierSuccess

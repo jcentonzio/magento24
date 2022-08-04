@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e8529ddc3f4961194635eb6226606cc",
+    "content-hash": "10ff5536dab3caa84088fc21e0b5c5d8",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -1382,6 +1382,50 @@
             "time": "2020-11-27T14:30:38+00:00"
         },
         {
+            "name": "ethanyehuda/magento2-cronjobmanager",
+            "version": "v1.13.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ethan3600/magento2-CronjobManager.git",
+                "reference": "e6d9c11aa3c2e97e78a9ba9083df72470bee60d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ethan3600/magento2-CronjobManager/zipball/e6d9c11aa3c2e97e78a9ba9083df72470bee60d0",
+                "reference": "e6d9c11aa3c2e97e78a9ba9083df72470bee60d0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-posix": "*",
+                "magento/framework": "~101.0.0|~102.0.0|~103.0.0|~104.0.0",
+                "php": "~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0"
+            },
+            "require-dev": {
+                "ext-pcntl": "*"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "EthanYehuda\\CronjobManager\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "A module for managing scheduled cron jobs from magento's admin panel",
+            "funding": [
+                {
+                    "url": "https://github.com/ethan3600",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-07-31T16:38:49+00:00"
+        },
+        {
             "name": "ezimuel/guzzlestreams",
             "version": "3.0.1",
             "source": {
@@ -2292,6 +2336,7 @@
                 "console",
                 "laminas"
             ],
+            "abandoned": "laminas/laminas-cli",
             "time": "2019-12-31T16:31:45+00:00"
         },
         {
