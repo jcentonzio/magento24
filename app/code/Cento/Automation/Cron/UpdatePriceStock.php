@@ -12,8 +12,8 @@ use Cento\Automation\Helper\Import;
 class UpdatePriceStock
 {
 
-    const FILE_NAME_PRICE_STOCK = "price_stock.csv";
-    const FILE_NAME_ADVANCED_PRICE = "advance_price.csv";
+    const FILE_NAME_PRICE_STOCK = 'price_stock.csv';
+    const FILE_NAME_ADVANCED_PRICE = 'advance_price.csv';
     const TYPE_ENTITY = "catalog_product";
 
     protected $logger;
@@ -68,11 +68,8 @@ class UpdatePriceStock
 
             $products = $this->_collection->addAttributeToSelect('*')->addFilter('attribute_set_id', 4, 'eq')->load();
 
-            $advanced_price = self::FILE_NAME_ADVANCED_PRICE;
-            $price_stock = self::FILE_NAME_PRICE_STOCK;
-
-            $filepath = "importexport/{$advanced_price}";
-            $filepath2 = "importexport/{$price_stock}";
+            $filepath= "importexport/price_stock.csv";
+            $filepath2 = "importexport/advanced_price.csv";
             $this->directory->create('export');
             $stream = $this->directory->openFile($filepath, 'w+');
             $stream2 = $this->directory->openFile($filepath2, 'w+');
@@ -81,10 +78,6 @@ class UpdatePriceStock
 
             $header = ['sku', 'price', 'qty', 'is_in_stock'];
             $header2 = ['sku','tier_price_website', 'tier_price_customer_group', 'tier_price_qty', 'tier_price', 'tier_price_value_type'];
-
-            $data = [];
-            $data2 = [];
-
             $stream->writeCsv($header);
             $stream2->writeCsv($header2);
 
@@ -118,6 +111,10 @@ class UpdatePriceStock
                     $stockStatus = 0;
                 }
 
+                //$this->_priceStock->execute($product->getData('entity_id'), $sourceProduct);
+
+                $data = [];
+                $data2 = [];
                 $data[] = $product->getSku();
                 $data[] = $sourceProduct['minoristabruto'];
                 $data[] = $sourceProduct['stock'];
@@ -128,14 +125,13 @@ class UpdatePriceStock
                 $data2[] = "1";
                 $data2[] = $sourceProduct['mayoristaneto'];
                 $data2[] = "Fixed";
+                $stream->writeCsv($data);
+                $stream2->writeCsv($data2);
 
             }
 
-            $stream->writeCsv($data);
-            $stream2->writeCsv($data2);
-
-            $this->import->execute(self::FILE_NAME_PRICE_STOCK, self::TYPE_ENTITY);
-            $this->import->execute(self::FILE_NAME_ADVANCED_PRICE, self::TYPE_ENTITY);
+            $this->import->execute('price_stock.csv', 'catalog_product');
+            $this->import->execute('advanced_price.csv', 'advanced_pricing');
 
         } catch (\Exception $exception){
             echo "{$exception->getMessage()} \n";
