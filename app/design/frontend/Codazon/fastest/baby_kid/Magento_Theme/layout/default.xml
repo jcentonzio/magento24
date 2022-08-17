@@ -43,13 +43,13 @@
 	<referenceContainer name="header.wrapper.bottom" htmlTag="div" htmlClass="header-wrapper-bottom">
 		<container name="header.bottom.content" htmlTag="div" htmlClass="header content" before="-" label="Header Bottom Content" >
 			<container htmlClass="row" htmlTag="div">
-				<container name="header.bottom.main" htmlClass="col-sm-24 col-md-14 col-lg-16" htmlTag="div">
+				<container name="header.bottom.main" htmlClass="col-sm-24 col-md-14 col-lg-22" htmlTag="div">
 					<container name="header.bottom.center" htmlClass="header-bottom-left" htmlTag="div" >
 						<container name="main.menu" htmlTag="div" htmlClass="header-main-menu" after="-" />
 						<container name="menu.container" htmlTag="div" htmlClass="menu-container" label="Header Main Menu" />
 					</container>
 				</container>
-				<container htmlClass="col-sm-24 col-md-10 col-lg-8" htmlTag="div">
+				<container htmlClass="col-sm-24 col-md-10 col-lg-2" htmlTag="div">
 					<container name="header.bottom.right" htmlClass="header-bottom-right pull-right" label="Header Bottom Right" htmlTag="div" />
 				</container>
 			</container>
