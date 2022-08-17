@@ -41,14 +41,19 @@ class ImportProduct
     {
         $this->logger->addInfo("Cronjob ImportProduct is executed.");
 
-        $this->_appState->setAreaCode('adminhtml');
+        try {
+            $this->_appState->setAreaCode('adminhtml');
 
-        $products = $this->_service->getProductPerCategory();
+            $products = $this->_service->getProductPerCategory();
 
-        $products = json_decode($products);
+            $products = json_decode($products);
 
-        foreach ($products->datos as $product) {
-            $this->_createProduct->execute($product);
+            foreach ($products->datos as $product) {
+                $this->_createProduct->execute($product);
+            }
+        } catch (\Exception $e) {
+            $this->logger->addInfo($e->getMessage());
+            echo "Error: {$e->getMessage()} \n";
         }
 
     }

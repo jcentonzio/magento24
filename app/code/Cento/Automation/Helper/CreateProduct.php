@@ -157,7 +157,7 @@ class CreateProduct {
                     ->setWebsiteIds([1])
                     ->setName($nombre)
                     ->setSku($params->codigo)
-                    ->setPrice($params->preciominorista)
+                    ->setPrice($params->minoristabruto)
                     ->setWeight(1)
                     ->setManufacturer($idManufacturer)
                     ->setVisibility(4)
@@ -175,7 +175,7 @@ class CreateProduct {
                     $logger = new \Zend\Log\Logger();
                     $logger->addWriter($writer);
                     $logger->info("se encontro archivo {$path}");
-                    $product->addImageToMediaGallery($path, array('image', 'small_image', 'thumbnail'), true, false);
+                    $product->addImageToMediaGallery($path, array('image', 'small_image', 'thumbnail'), false, false);
                 } else {
                     $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/import.log');
                     $logger = new \Zend\Log\Logger();
@@ -201,7 +201,7 @@ class CreateProduct {
 
             $tierPriceData = $this->productTierPriceFactory->create();
 
-            $precioMayorista = "{$params->preciomayorista}.01";
+            $precioMayorista = "{$params->mayoristaneto}.01";
 
             $precioMayorista = floatval($precioMayorista);
 
