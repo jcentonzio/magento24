@@ -7,9 +7,12 @@ define(['jquery'], function($) {
           defaults: {
               tracks: {
                   typeClient: true,
+                  regionID: true
               },
               listens: {
-                  'checkoutProvider:shippingAddress.custom_attributes.type_client': 'handlerTypeClientChange'
+                  'checkoutProvider:shippingAddress.custom_attributes.type_client': 'handlerTypeClientChange',
+                  'checkoutProvider:shippingAddress.region_id': 'handlerRegionIdChange'
+
               }
           },
 
@@ -21,12 +24,17 @@ define(['jquery'], function($) {
                   $('[name="shippingAddress.custom_attributes.giro"]').css('display', 'list-item');
               }  else {
                   $('[name="shippingAddress.custom_attributes.razon_social"]').css('display', 'none');
-                  $('[name="shippingAddress.custom_attributes.razon_social"]').removeClass('_required')
+                  $('[name="shippingAddress.custom_attributes.razon_social"]').removeClass('_required');
                   $('[name="shippingAddress.custom_attributes.rut_empresa"]').css('display', 'none');
                   $('[name="shippingAddress.custom_attributes.giro"]').css('display', 'none');
               }
 
               console.log("valor tipo de cliente: " + newTypeClient)
+          },
+          handlerRegionIdChange: function () {
+              console.log("cambio region");
+              $('[name="postcode"]').val('').change();
+              $('[name="postcode"]').val('1234').change();
           }
 
       });

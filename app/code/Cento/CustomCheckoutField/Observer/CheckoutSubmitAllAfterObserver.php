@@ -37,6 +37,7 @@ class CheckoutSubmitAllAfterObserver implements ObserverInterface
 
             $orderShippingAddress = $order->getShippingAddress();
             $orderShippingAddress
+                ->setRut($shippingAddress->getRut())
                 ->setRutEmpresa($shippingAddress->getRutEmpresa())
                 ->setRazonSocial($shippingAddress->getRazonSocial())
                 ->setGiro($shippingAddress->getGiro())
@@ -52,6 +53,7 @@ class CheckoutSubmitAllAfterObserver implements ObserverInterface
 
                 $address = $objectManager->create('Magento\Customer\Model\Address')->load($shippingAddress->getCustomerAddressId());
                 $address
+                    ->setRut($shippingAddress->getRut())
                     ->setRutEmpresa($shippingAddress->getRutEmpresa())
                     ->setRazonSocial($shippingAddress->getRazonSocial())
                     ->setGiro($shippingAddress->getGiro())

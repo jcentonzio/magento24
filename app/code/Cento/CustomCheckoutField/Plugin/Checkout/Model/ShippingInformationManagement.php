@@ -34,6 +34,7 @@ class ShippingInformationManagement
                 $logger->info('rut: '.print_r($shippingExtensionAttributes->getRutEmpresa(), true));
 
                 $shippingAddress
+                    ->setRut($shippingExtensionAttributes->getRut())
                     ->setRutEmpresa($shippingExtensionAttributes->getRutEmpresa())
                     ->setRazonSocial($shippingExtensionAttributes->getRazonSocial())
                     ->setGiro($shippingExtensionAttributes->getGiro());

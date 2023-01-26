@@ -8,6 +8,7 @@
                 <item name="UpdateProduct" xsi:type="object">Cento\Automation\Console\Command\UpdateProduct</item>
                 <item name="UpdatePriceStock" xsi:type="object">Cento\Automation\Console\Command\UpdatePriceStock</item>
                 <item name="UpdateProductImages" xsi:type="object">Cento\Automation\Console\Command\UpdateProductImages</item>
+                <item name="SendNvv" xsi:type="object">Cento\Automation\Console\Command\SendVenta</item>
 			</argument>
 		</arguments>
 	</type>
